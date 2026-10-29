@@ -49,12 +49,12 @@
   <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-zinc-100 transition-all duration-200">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
       
-      <!-- LUZEN Logo -->
+      <!-- LUZEN Logo (From original asset, uncropped) -->
       <a href="#" class="flex items-center gap-1 group shrink-0" aria-label="LUZEN Inicio">
         <img 
           src="assets/images/luzen_logo_transparent.png" 
           alt="LUZEN" 
-          class="h-9 sm:h-11 w-auto object-contain transition-transform duration-200 group-hover:opacity-85"
+          class="h-10 sm:h-12 w-auto object-contain transition-transform duration-200 group-hover:opacity-85"
         />
       </a>
 
@@ -125,7 +125,7 @@
   <!-- 3. CATALOG CONTENT AREA                                      -->
   <!-- ============================================================ -->
   <main class="flex-1 max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-4 sm:py-8 w-full">
-    <!-- Grid container: Filas de 2 en celular y 4 en desktop -->
+    <!-- Grid container: Filas de 2 en celular y 4 en desktop (Sin precios) -->
     <div id="catalog-grid" class="w-full">
       <!-- Injected via app.js -->
     </div>
@@ -145,7 +145,7 @@
     <div class="p-5 border-b border-zinc-100 flex items-center justify-between">
       <div class="flex items-center gap-2">
         <i data-lucide="shopping-cart" class="w-5 h-5 text-black"></i>
-        <h3 class="font-extrabold text-base text-zinc-950">Tu Carrito</h3>
+        <h3 class="font-extrabold text-base text-zinc-950">Tu Pedido</h3>
       </div>
       <button id="close-cart-btn" class="w-8 h-8 rounded-full hover:bg-zinc-100 flex items-center justify-center text-zinc-500 hover:text-black transition">
         <i data-lucide="x" class="w-5 h-5"></i>
@@ -163,20 +163,16 @@
       <!-- Injected via JavaScript -->
     </div>
 
-    <!-- Drawer Footer -->
+    <!-- Drawer Footer (Sin precios) -->
     <div class="p-5 border-t border-zinc-100 bg-zinc-50/50 space-y-4">
       <div class="space-y-1.5 text-xs text-zinc-600">
         <div class="flex justify-between">
-          <span>Subtotal</span>
-          <span id="cart-subtotal" class="font-semibold text-zinc-900">$ 0</span>
+          <span>Prendas en el pedido</span>
+          <span id="cart-total-items" class="font-semibold text-zinc-900">0 prendas</span>
         </div>
         <div class="flex justify-between">
           <span>Envío</span>
           <span class="font-bold text-emerald-600">A coordinar</span>
-        </div>
-        <div class="flex justify-between text-base font-black text-zinc-950 pt-2 border-t border-zinc-200">
-          <span>Total</span>
-          <span id="cart-total">$ 0</span>
         </div>
       </div>
 
@@ -184,7 +180,7 @@
         id="cart-checkout-btn" 
         class="w-full bg-[#0A0A0C] hover:bg-zinc-800 text-white font-bold py-3.5 px-4 rounded-xl flex items-center justify-center gap-2 text-sm transition-all shadow-md active:scale-[0.98]">
         <i data-lucide="message-circle" class="w-4 h-4 text-emerald-400"></i>
-        <span>Finalizar compra por WhatsApp</span>
+        <span>Consultar y pedir por WhatsApp</span>
       </button>
     </div>
   </aside>

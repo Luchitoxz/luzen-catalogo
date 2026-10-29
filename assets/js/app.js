@@ -7,13 +7,11 @@
 // Tal como solicitaste: "no agregues las camisetas, eso lo hacemos despues"
 const PRODUCTS = [
   /* 
-  Estructura lista para cargar:
+  Estructura lista para cargar (sin precios):
   {
     id: 'argentina-local-2024',
     title: 'Argentina Local 2024',
     category: 'selecciones',
-    price: '$ 49.999',
-    priceNum: 49999,
     image: 'assets/images/jerseys/argentina_local_2024.png',
     inStock: true
   }
@@ -43,8 +41,7 @@ const cartDrawer = document.getElementById('cart-drawer');
 const cartOverlay = document.getElementById('cart-overlay');
 const cartBadge = document.getElementById('cart-badge');
 const cartItemsContainer = document.getElementById('cart-items-container');
-const cartSubtotalEl = document.getElementById('cart-subtotal');
-const cartTotalEl = document.getElementById('cart-total');
+const cartTotalItemsEl = document.getElementById('cart-total-items');
 const searchInput = document.getElementById('search-input');
 const toastContainer = document.getElementById('toast-container');
 const quickViewModal = document.getElementById('quick-view-modal');
@@ -93,7 +90,7 @@ function setCategory(categoryId) {
   }
 }
 
-// Renderizado del Catálogo
+// Renderizado del Catálogo (Sin precios)
 function renderCatalog() {
   if (!catalogGrid) return;
 
@@ -117,7 +114,7 @@ function renderCatalog() {
         </div>
         <h3 class="font-extrabold text-lg sm:text-xl text-zinc-950 tracking-tight">Catálogo listo para cargar</h3>
         <p class="text-xs sm:text-sm text-zinc-500 mt-2 max-w-md leading-relaxed">
-          Diseñado en filas de a 2 camisetas en celular con scroll vertical hacia abajo.
+          Diseñado en filas de a 2 camisetas en celular y 4 en desktop (sin precios mostrados).
         </p>
         
         <div class="mt-4 flex flex-wrap items-center justify-center gap-2">
@@ -137,7 +134,7 @@ function renderCatalog() {
           onclick="toggleSkeletonPreview()" 
           class="mt-6 inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-black text-white hover:bg-zinc-800 text-xs font-semibold transition active:scale-95 shadow-sm">
           <i data-lucide="eye" class="w-4 h-4"></i>
-          <span>Ver maqueta de tarjetas (Filas de a 2 en celular)</span>
+          <span>Ver maqueta de tarjetas (Sin precios)</span>
         </button>
       </div>
     `;
@@ -149,7 +146,7 @@ function renderCatalog() {
   // Cuadrícula: Filas de a 2 camisetas en celular (grid-cols-2) y 4 columnas en desktop (md:grid-cols-4)
   catalogGrid.className = 'grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 md:gap-6';
 
-  // Tarjetas mockup o reales
+  // Tarjetas mockup o reales (sin precios)
   const itemsToRender = isPreviewSkeletonMode ? getSkeletonPreviewCards() : filtered;
 
   catalogGrid.innerHTML = itemsToRender.map(product => {
@@ -181,18 +178,15 @@ function renderCatalog() {
           `}
         </div>
 
-        <!-- Info & Acción del Carrito -->
-        <div class="pt-2 sm:pt-3 border-t border-zinc-200/50 flex items-end justify-between gap-1.5">
+        <!-- Info & Acción del Carrito (Sin precios) -->
+        <div class="pt-2 sm:pt-3 border-t border-zinc-200/50 flex items-center justify-between gap-2">
           <div class="min-w-0 flex-1">
             <h3 class="font-bold text-zinc-950 text-xs sm:text-sm md:text-base leading-snug truncate" title="${product.title}">
               ${product.title}
             </h3>
-            <p class="font-extrabold text-zinc-950 text-xs sm:text-base md:text-lg mt-0.5 sm:mt-1 tracking-tight">
-              ${product.price}
-            </p>
           </div>
 
-          <!-- Botón de carrito cuadrado negro idéntico al mockup -->
+          <!-- Botón de carrito cuadrado negro -->
           <button 
             onclick="addToCart('${product.id}', event)" 
             aria-label="Agregar al carrito"
@@ -218,14 +212,14 @@ function toggleSkeletonPreview() {
 
 function getSkeletonPreviewCards() {
   return [
-    { id: 'demo-1', title: 'Argentina Local 2024', price: '$ 49.999' },
-    { id: 'demo-2', title: 'Argentina Visitante 2024', price: '$ 49.999' },
-    { id: 'demo-3', title: 'Real Madrid Local 2024', price: '$ 49.999' },
-    { id: 'demo-4', title: 'Barcelona Local 2024', price: '$ 49.999' },
-    { id: 'demo-5', title: 'Inter de Milán Local 2024', price: '$ 49.999' },
-    { id: 'demo-6', title: 'Manchester City Local 2024', price: '$ 49.999' },
-    { id: 'demo-7', title: 'Manchester United Local 2024', price: '$ 49.999' },
-    { id: 'demo-8', title: 'Juventus Local 2024', price: '$ 49.999' }
+    { id: 'demo-1', title: 'Argentina Local 2024' },
+    { id: 'demo-2', title: 'Argentina Visitante 2024' },
+    { id: 'demo-3', title: 'Real Madrid Local 2024' },
+    { id: 'demo-4', title: 'Barcelona Local 2024' },
+    { id: 'demo-5', title: 'Inter de Milán Local 2024' },
+    { id: 'demo-6', title: 'Manchester City Local 2024' },
+    { id: 'demo-7', title: 'Manchester United Local 2024' },
+    { id: 'demo-8', title: 'Juventus Local 2024' }
   ];
 }
 
@@ -272,9 +266,6 @@ function addToCart(productId, event) {
   let product = PRODUCTS.find(p => p.id === productId);
   if (!product && isPreviewSkeletonMode) {
     product = getSkeletonPreviewCards().find(p => p.id === productId);
-    if (product) {
-      product.priceNum = 49999;
-    }
   }
 
   if (!product) return;
@@ -286,8 +277,6 @@ function addToCart(productId, event) {
     cart.push({
       id: product.id,
       title: product.title,
-      price: product.price,
-      priceNum: product.priceNum || 49999,
       quantity: 1,
       image: product.image || ''
     });
@@ -295,7 +284,7 @@ function addToCart(productId, event) {
 
   saveCart();
   updateCartUI();
-  showToast(`¡${product.title} agregada al carrito!`, 'cart');
+  showToast(`¡${product.title} agregada al pedido!`, 'cart');
 }
 
 function updateCartQuantity(index, delta) {
@@ -313,7 +302,7 @@ function removeFromCart(index) {
   const removed = cart.splice(index, 1)[0];
   saveCart();
   updateCartUI();
-  showToast(`Removiste ${removed.title} del carrito`);
+  showToast(`Removiste ${removed.title} del pedido`);
 }
 
 function saveCart() {
@@ -327,6 +316,10 @@ function updateCartUI() {
     cartBadge.textContent = totalCount;
   }
 
+  if (cartTotalItemsEl) {
+    cartTotalItemsEl.textContent = `${totalCount} ${totalCount === 1 ? 'prenda' : 'prendas'}`;
+  }
+
   if (!cartItemsContainer) return;
 
   if (cart.length === 0) {
@@ -335,23 +328,18 @@ function updateCartUI() {
         <div class="w-16 h-16 rounded-full bg-zinc-100 flex items-center justify-center mb-4 text-zinc-300">
           <i data-lucide="shopping-bag" class="w-8 h-8"></i>
         </div>
-        <p class="font-bold text-zinc-800 text-lg">Tu carrito está vacío</p>
-        <p class="text-xs text-zinc-500 mt-1 max-w-xs">Elegí tus camisetas y sumalas aquí para coordinar tu pedido.</p>
+        <p class="font-bold text-zinc-800 text-lg">Tu pedido está vacío</p>
+        <p class="text-xs text-zinc-500 mt-1 max-w-xs">Elegí tus camisetas y sumalas aquí para consultar disponibilidad.</p>
         <button onclick="closeCart()" class="mt-6 px-5 py-2.5 bg-black text-white text-xs font-semibold rounded-full hover:bg-zinc-800 transition">
           Ver Catálogo
         </button>
       </div>
     `;
-    if (cartSubtotalEl) cartSubtotalEl.textContent = '$ 0';
-    if (cartTotalEl) cartTotalEl.textContent = '$ 0';
     if (window.lucide) lucide.createIcons();
     return;
   }
 
-  let subtotal = 0;
   cartItemsContainer.innerHTML = cart.map((item, index) => {
-    const itemTotal = item.priceNum * item.quantity;
-    subtotal += itemTotal;
     return `
       <div class="flex items-center gap-3 p-3 bg-zinc-50 rounded-xl border border-zinc-100">
         <div class="w-14 h-14 bg-white rounded-lg p-1 border border-zinc-100 flex items-center justify-center">
@@ -359,7 +347,7 @@ function updateCartUI() {
         </div>
         <div class="flex-1 min-w-0">
           <h4 class="font-bold text-xs md:text-sm text-zinc-900 truncate">${item.title}</h4>
-          <p class="text-xs font-bold text-zinc-900 mt-0.5">$ ${itemTotal.toLocaleString('es-AR')}</p>
+          <p class="text-[11px] text-zinc-500 mt-0.5">Cantidad: <strong class="text-zinc-800">${item.quantity}</strong></p>
         </div>
         <div class="flex items-center gap-2">
           <div class="flex items-center border border-zinc-200 rounded-lg bg-white overflow-hidden">
@@ -374,10 +362,6 @@ function updateCartUI() {
       </div>
     `;
   }).join('');
-
-  const formattedTotal = `$ ${subtotal.toLocaleString('es-AR')}`;
-  if (cartSubtotalEl) cartSubtotalEl.textContent = formattedTotal;
-  if (cartTotalEl) cartTotalEl.textContent = formattedTotal;
 
   if (window.lucide) {
     lucide.createIcons();
@@ -400,24 +384,20 @@ function closeCart() {
   }
 }
 
-// Checkout WhatsApp
+// Checkout WhatsApp (Sin precios, consulta de pedido)
 function checkoutWhatsApp() {
   if (cart.length === 0) {
-    showToast('Tu carrito está vacío', 'alert');
+    showToast('Tu pedido está vacío', 'alert');
     return;
   }
 
-  let text = '¡Hola LUZEN! ⚽ Quisiera encargar los siguientes productos del catálogo:\n\n';
-  let total = 0;
+  let text = '¡Hola LUZEN! ⚽ Quisiera consultar disponibilidad y encargar las siguientes camisetas del catálogo:\n\n';
 
   cart.forEach(item => {
-    const itemTotal = item.priceNum * item.quantity;
-    total += itemTotal;
-    text += `• *${item.title}* x${item.quantity}: $ ${itemTotal.toLocaleString('es-AR')}\n`;
+    text += `• *${item.title}* (Cantidad: ${item.quantity})\n`;
   });
 
-  text += `\n*TOTAL: $ ${total.toLocaleString('es-AR')}*`;
-  text += `\n\n¿Tienen disponibilidad para coordinar el envío? Gracias.`;
+  text += `\n¿Cómo coordinamos el pago y el envío? Muchas gracias.`;
 
   const phone = '5491112345678';
   const url = `https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
