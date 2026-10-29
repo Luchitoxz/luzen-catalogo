@@ -7,6 +7,10 @@
   --text-dark: #0A0A0C;
 }
 
+html {
+  height: 100%;
+}
+
 body {
   font-family: var(--font-main);
   background-color: #FFFFFF;
@@ -14,6 +18,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+  min-height: 100%;
 }
 
 /* Custom scrollbar hiding with touch momentum */
@@ -34,6 +39,21 @@ body {
 .scroll-snap-item {
   scroll-snap-align: start;
   flex-shrink: 0;
+}
+
+/* Floating WhatsApp Button Pulse */
+@keyframes pulseSubtle {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.6);
+  }
+}
+.whatsapp-pulse {
+  animation: pulseSubtle 3s ease-in-out infinite;
 }
 
 /* Heart pop animation */
