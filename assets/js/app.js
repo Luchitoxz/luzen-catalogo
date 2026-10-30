@@ -12,7 +12,7 @@ const PRODUCTS = [
     season: '02-03',
     team: 'Arsenal',
     category: ['retro', 'clubes-europeos'],
-    image: 'assets/images/jerseys/arsenal-retro-manga-larga-02-03.png',
+    image: 'assets/images/jerseys/arsenal-retro-manga-larga-02-03.webp',
     searchKeywords: 'arsenal o2 inglaterra premier retro manga larga 2002 2003 02-03',
     description: 'Camiseta retro titular manga larga del Arsenal, época histórica de la Premier League con el mítico sponsor O2.',
     inStock: true
@@ -24,7 +24,7 @@ const PRODUCTS = [
     season: '26-27',
     team: 'Boca Juniors',
     category: ['clubes-argentinos', 'nuevos'],
-    image: 'assets/images/jerseys/boca-suplente-26-27.png',
+    image: 'assets/images/jerseys/boca-suplente-26-27.webp',
     searchKeywords: 'boca juniors cabj suplente alternativa bastones trefoil adidas betsson 2026 2027 26-27',
     description: 'Camiseta suplente alternativa de Boca Juniors temporada 26-27 a bastones finos clásicos y logo Trefoil.',
     inStock: true
@@ -36,7 +36,7 @@ const PRODUCTS = [
     season: '26-27',
     team: 'Boca Juniors',
     category: ['clubes-argentinos', 'nuevos'],
-    image: 'assets/images/jerseys/boca-titular-jugador-26-27.png',
+    image: 'assets/images/jerseys/boca-titular-jugador-26-27.webp',
     searchKeywords: 'boca juniors cabj titular jugador franja dorada betsson 2026 2027 26-27',
     description: 'Camiseta titular versión jugador de Boca Juniors temporada 26-27 con franja dorada tradicional.',
     inStock: true
@@ -48,7 +48,7 @@ const PRODUCTS = [
     season: '06-07',
     team: 'AC Milan',
     category: ['retro', 'clubes-europeos'],
-    image: 'assets/images/jerseys/milan-retro-manga-larga-06-07.png',
+    image: 'assets/images/jerseys/milan-retro-manga-larga-06-07.webp',
     searchKeywords: 'milan ac milan italia bwin retro manga larga 2006 2007 06-07',
     description: 'Camiseta retro titular manga larga del AC Milan campeón de Champions League en Atenas 2007, sponsor bwin.',
     inStock: true
@@ -60,7 +60,7 @@ const PRODUCTS = [
     season: '87-88',
     team: 'Napoli',
     category: ['retro', 'clubes-europeos'],
-    image: 'assets/images/jerseys/napoli-retro-manga-larga-87-88.png',
+    image: 'assets/images/jerseys/napoli-retro-manga-larga-87-88.webp',
     searchKeywords: 'napoli maradona buitoni scudetto retro manga larga italia 1987 1988 87-88',
     description: 'Camiseta retro histórica del Napoli manga larga era Diego Armando Maradona con escudo Scudetto y sponsor Buitoni.',
     inStock: true
@@ -72,7 +72,7 @@ const PRODUCTS = [
     season: '26-27',
     team: 'River Plate',
     category: ['clubes-argentinos', 'nuevos'],
-    image: 'assets/images/jerseys/river-suplente-jugador-26-27.png',
+    image: 'assets/images/jerseys/river-suplente-jugador-26-27.webp',
     searchKeywords: 'river plate riber suplente tricolor jugador betano trefoil adidas 2026 2027 26-27',
     description: 'Camiseta alternativa tricolor versión jugador de River Plate temporada 26-27, sponsor Betano.',
     inStock: true
@@ -84,7 +84,7 @@ const PRODUCTS = [
     season: '26-27',
     team: 'River Plate',
     category: ['clubes-argentinos', 'nuevos'],
-    image: 'assets/images/jerseys/river-titular-jugador-26-27.png',
+    image: 'assets/images/jerseys/river-titular-jugador-26-27.webp',
     searchKeywords: 'river plate riber titular jugador banda roja betano 2026 2027 26-27',
     description: 'Camiseta titular versión jugador de River Plate temporada 26-27 con la histórica banda roja cruzada.',
     inStock: true
@@ -96,7 +96,7 @@ const PRODUCTS = [
     season: '12-13',
     team: 'Santos FC',
     category: ['retro'],
-    image: 'assets/images/jerseys/santos-retro-manga-larga-12-13.png',
+    image: 'assets/images/jerseys/santos-retro-manga-larga-12-13.webp',
     searchKeywords: 'santos brasil neymar bmg retro manga larga 2012 2013 12-13',
     description: 'Camiseta retro manga larga celeste de Santos FC temporada 2012-2013, era Neymar Jr con sponsor Banco BMG.',
     inStock: true
